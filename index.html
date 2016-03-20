@@ -5,117 +5,33 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-
-    <div class="container">
-      <div class="slider">
-        <div class="holder">
-          <div class="slide"><img src="http://www.bachelorpedia.com/sites/default/files/field/image/awesome_foods.jpg"></img></div>
-          <div class="slide"><img src="http://images.skymetweather.com/themes/skymet/images/gallery/toplists/20-Must-Try-Food-Items-in-Delhi/2.jpg"></img></div>
-          <div class="slide"><img src="http://seriouslyspain.com/wp-content/uploads/2011/10/spaghetti-at-sugar-lust-cafe-bangkok.jpg"></img></div>
-        </div>
+    
+    <div class="slider">
+      <div class="holder">
+        <div class="slide"><img src="img/1.jpg"></img></div>
+        <div class="slide"><img src="img/2.jpg"></img></div>
+        <div class="slide"><img src="img/3.jpg"></img></div>
+        <div class="slide"><img src="img/4.jpg"></img></div>
+        <div class="slide"><img src="img/5.jpg"></img></div>
+        <div class="slide"><img src="img/6.jpg"></img></div>
+       
       </div>
     </div>
     
 
-    <button>CLICK</button>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
-    <script>
-      
-      // Defaults
-      var $slider = $(".slider");
-      var $holder = $slider.find(".holder");
-      var slideWidth = parseInt($holder.find(".slide").css("width"));
-      var w = 80;
-      
-      // Init variables
-      var hasMouseDown = false;
-      var startCoord;
-      var initialCoord;
-      
-      $("div").bind("drop dragstart", function(e) {
-        e.preventDefault();
-        return false;
-      });
-      
-      $slider.mousedown(function(e) {
-        console.log("mousedown");
-        hasMouseDown = true;
-        startCoord = initialCoord = e.pageX;
-      });
-      
-      $slider.mousemove(function(e) {
-        if (hasMouseDown === true) {
-          recycleSlider();
-          if ($holder.is(":animated")) {
-            $holder.stop(true, false);
-          }
-          
-          var ePageX = e.pageX;
-          $holder.css("margin-left", "+=" + (ePageX - startCoord) + "px");
-          startCoord = ePageX;
-        }
-      })
-      
-      var finishMouseUp = function() {
-          recycleSlider();
-      }
-      var autoCompleteSwipe = function(remainSlideWidth, d) {
-        var next;
-        if (remainSlideWidth < d) {
-          next = remainSlideWidth;
-        }
-        else {
-          next = remainSlideWidth - slideWidth;
-        }
-        
-        var marginLeft = parseInt($holder.css("margin-left"));
-        $holder.animate({
-          "margin-left": marginLeft + next
-        }, "slow", finishMouseUp);
-      }
-      
-      $slider.mouseup(function(e) {
-      
-        hasMouseDown = false;
-        var remainSlideWidth = parseInt($holder.css("margin-left")) % slideWidth;
-        if (remainSlideWidth < 0) {
-          remainSlideWidth *= -1;
-        }
-        
-        if (initialCoord < e.pageX) { // swipe left to right
-          autoCompleteSwipe(remainSlideWidth, slideWidth - w);
-        }
-        else { // swipe right to left
-          autoCompleteSwipe(remainSlideWidth, w);
-        }
-        
-      });
-      
-      $(".slider").mouseout(function(e) {
-        e.preventDefault();
-        console.log("mouseout");
-        if (hasMouseDown === true)
-          ($(this)).mouseup();
-        
-      });
-      
-      var recycleSlider = function() {
-        
-        if (parseInt($(".holder").css("margin-left"))*-1 < slideWidth) {
-          $(".slide").last().insertBefore($(".slide").first());
-          $(".holder").css("margin-left", "-=" + slideWidth);
-        }  
-        else if (parseInt($(".holder").css("margin-left"))*-1 > (slideWidth*1.5)) {
-          $(".slide").first().insertAfter($(".slide").last());
-          $(".holder").css("margin-left", "+=" + slideWidth);
-        }
-      }
-      
-      
+    <script src="touch-slider-plugin.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
     
-    </script>
+    <script>
+
+      $(".slider").touchSlider({
+        duration: 2000,
+        autoplay: false
+      });
+      
+    </script>  
     
     
   </body>
