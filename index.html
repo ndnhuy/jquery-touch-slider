@@ -6,17 +6,25 @@
   </head>
   <body>
     
-    <div class="slider">
-      <div class="holder">
-        <div class="slide"><img src="img/1.jpg"></img></div>
-        <div class="slide"><img src="img/2.jpg"></img></div>
-        <div class="slide"><img src="img/3.jpg"></img></div>
-        <div class="slide"><img src="img/4.jpg"></img></div>
-        <div class="slide"><img src="img/5.jpg"></img></div>
-        <div class="slide"><img src="img/6.jpg"></img></div>
-       
+    <div class="container">
+      <div class="slider">
+        <div>
+          <div><img src="img/1.jpg"></img></div>
+          <div><img src="img/2.jpg"></img></div>
+          <div><img src="img/3.jpg"></img></div>
+          <div><img src="img/4.jpg"></img></div>
+          <div><img src="img/5.jpg"></img></div>
+          <div><img src="img/6.jpg"></img></div>
+        </div>
       </div>
+    
+    
+    
+      <button class="btn" id="prev">Previous</button>
+      <button class="btn" id="next">Next</button>
     </div>
+    
+
     
 
 
@@ -26,10 +34,13 @@
     
     <script>
 
-      $(".slider").touchSlider({
-        duration: 2000,
-        autoplay: true
-      });
+       $(".slider").touchSlider({
+          duration: 2000,
+          autoplay: false,
+          nextArrow: $("#next"),
+          prevArrow: $("#prev"),
+          dots: true,
+        });
       
     </script>  
     

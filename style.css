@@ -19,6 +19,11 @@
 /*    height: 400px;*/
 /*}*/
 
+
+body {
+    background-color: black;
+}
+
 .slider {
     width: 700px;
     height: 500px;
@@ -33,11 +38,15 @@
 }
 
 .holder {
-    width: 500%;
+    width: 700%;
 }
 
 .container {
     width: 700px;
+}
+
+button {
+	margin: center;
 }
 
 .slide1 {background: red;}
@@ -45,3 +54,5 @@
 .slide3 {background: yellow;}
 .slide4 {background: black;}
 .slide5 {background: green;}
+.slide6 {background: orange;}
+.slide7 {background: pink;}
