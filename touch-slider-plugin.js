@@ -77,16 +77,12 @@
     if (currentMarginLeft < 0) {
       currentMarginLeft *= -1;
     }
-    //var currentSlide = parseInt(_.$holder.css("margin-left")) * -1 / _.slideWidth;
-    //var lastIndex = _.$slides.size() - 1;
+
     if (currentMarginLeft > (_.$slides.size() - 2)*_.slideWidth) {
-      console.log("move to head");
-      //_.$holder.css("margin-left", _.initialMarginLeft - _.slideWidth);
       var v = (_.$slides.size() - 2) * _.slideWidth;
       _.$holder.css("margin-left", "+=" + v + "px");
     }
     else if (_.slideWidth - currentMarginLeft >= _.w) {
-      console.log("move to tail");
       var v = (_.$slides.size() - 2)*_.slideWidth;
       _.$holder.css("margin-left", "-=" + v + "px");
     }
@@ -165,10 +161,7 @@
           onMouseUp(e);
         });
       }
-      
-      
-      
-      
+
       
     }
     
